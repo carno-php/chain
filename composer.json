@@ -1,0 +1,28 @@
+{
+  "name": "carno-php/chain",
+  "license": "MIT",
+  "require": {
+    "php": "^7.1",
+    "carno-php/coroutine": "^1.0",
+    "carno-php/promise": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Carno\\Chain\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Carno\\Chain\\Tests\\": "tests"
+    }
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
