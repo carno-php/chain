@@ -3,7 +3,22 @@ language: php
 php:
 - '7.2'
 
-install:
-- composer install --ignore-platform-reqs
+dist: trusty
+sudo: false
 
-script: ./vendor/bin/phpunit tests --repeat 100
+cache:
+  directories:
+  - ~/.composer
+  - ~/.php-ext
+
+before_install:
+- source <(curl -sL https://github.com/carno-php/travis-ci/raw/master/tests-prepare.sh)
+
+install:
+- composer update
+
+script:
+- testing
+
+after_success:
+- coveralls
