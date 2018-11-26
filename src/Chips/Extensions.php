@@ -36,6 +36,7 @@ trait Extensions
         foreach ($this->layers as $idx => $layer) {
             if ($this->matched($layer, $search)) {
                 unset($this->layers[$idx]);
+                $this->layers = array_values($this->layers);
                 return true;
             }
         }

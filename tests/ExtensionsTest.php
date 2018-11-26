@@ -80,6 +80,22 @@ class ExtensionsTest extends TestCase
         }, 'AC', 'CA', $a, $b, $c);
     }
 
+    public function testManager2()
+    {
+        $a = new A;
+        $b = new B;
+        $c = new C;
+
+        $this->flowTesting(function (Layers $ext) use ($a, $b, $c) {
+            $ext->remove(B::class);
+            $ext->prepend(C::class, $b);
+            $ext->remove(A::class);
+            $ext->prepend(B::class, $a);
+            $ext->remove(C::class);
+            $ext->append(B::class, $c);
+        }, 'ABC', 'CBA', $a, $b, $c);
+    }
+
     private function flowTesting(Closure $opr, string $in, string $out, Layered ...$init)
     {
         $ext = new Layers(...$init);
